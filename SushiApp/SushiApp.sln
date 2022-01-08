@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SushiApp", "SushiApp\SushiApp.csproj", "{4881CC17-CF20-4CD8-9B1B-583865B20F07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sushi", "Sushi\Sushi.csproj", "{F9E50D66-C22F-4F26-A72E-D44FD7378A58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SushiTests", "SushiTests\SushiTests.csproj", "{E9F35E04-D052-4C02-8482-9357DA35D475}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{4881CC17-CF20-4CD8-9B1B-583865B20F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4881CC17-CF20-4CD8-9B1B-583865B20F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4881CC17-CF20-4CD8-9B1B-583865B20F07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9E50D66-C22F-4F26-A72E-D44FD7378A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9E50D66-C22F-4F26-A72E-D44FD7378A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9E50D66-C22F-4F26-A72E-D44FD7378A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9E50D66-C22F-4F26-A72E-D44FD7378A58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9F35E04-D052-4C02-8482-9357DA35D475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9F35E04-D052-4C02-8482-9357DA35D475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9F35E04-D052-4C02-8482-9357DA35D475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9F35E04-D052-4C02-8482-9357DA35D475}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
