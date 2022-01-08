@@ -8,8 +8,13 @@ namespace Sushi.Model
 {
     public class Order
     {
-        IEnumerable<Plate> Plates { get; set; } = new List<Plate>();
+        public IEnumerable<Plate> Plates { get; set; }
 
-        public float TotalPrice { get; } = default;
+        public double TotalPrice => Plates.Select(plate => plate.Price).Sum();
+
+        public Order(IEnumerable<Plate> plates)
+        {
+            Plates = plates;
+        }
     }
 }
