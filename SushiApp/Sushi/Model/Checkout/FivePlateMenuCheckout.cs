@@ -15,6 +15,7 @@ namespace Sushi.Model.Checkout
         {
             return (order.Plates.Any(plate => plate.Type == PlateType.Red) ||
                     order.Plates.Any(plate => plate.Type == PlateType.Blue)) &&
+                   order.Plates.All(plate => plate.Type != PlateType.Soup) &&
                    order.Plates.Count() >= 5;
         }
 
@@ -24,8 +25,16 @@ namespace Sushi.Model.Checkout
 
             var plates = order.Plates.ToList();
 
-            // Remove soup menu items: a soup and four costliest plates.
-            plates.Remove(plates.First(plate => plate.Type == PlateType.Soup));
+            // Remove Red plate or Blue plate otherwise
+            var plateToRemove = plates.FirstOrDefault(plate => plate.Type == PlateType.Red) ??
+                                plates.FirstOrDefault(plate => plate.Type == PlateType.Blue);
+
+            if (plateToRemove == null)
+            {
+                throw new InvalidOperationException("Cannot apply checkout");
+            }
+
+            plates.Remove(plateToRemove);
             plates.Sort(new PlatePriceDescendingComparer());
             plates.RemoveRange(0, 4);
 
