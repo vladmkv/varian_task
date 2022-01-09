@@ -74,6 +74,11 @@ namespace SushiTests
             Assert.IsType<SoupMenuCheckout>(selector.SelectStrategy(soupMenuOrder, menuDateTime));
             Assert.IsType<FivePlateMenuCheckout>(selector.SelectStrategy(fivePlateOrder, menuDateTime));
             Assert.IsType<AdditiveCheckout>(selector.SelectStrategy(basicOrder, menuDateTime));
+
+            // Without order time basic price calculation should occur
+            Assert.IsType<AdditiveCheckout>(selector.SelectStrategy(soupMenuOrder));
+            Assert.IsType<AdditiveCheckout>(selector.SelectStrategy(fivePlateOrder));
+            Assert.IsType<AdditiveCheckout>(selector.SelectStrategy(basicOrder));
         }
     }
 }
