@@ -16,11 +16,11 @@ namespace SushiTests
             Assert.IsType<AdditiveCheckout>(selector.SelectStrategy(outsideMenuDataTime));
 
             var menuDateTime = new DateTime(2022, 1, 10, 12, 0, 0);
-            Assert.IsType<MenuCheckout>(selector.SelectStrategy(menuDateTime));
+            Assert.IsType<SoupMenuCheckout>(selector.SelectStrategy(menuDateTime));
 
             // Test time corner cases
             var cornerMenuStarts = new DateTime(2022, 1, 10, 11, 0, 0);
-            Assert.IsType<MenuCheckout>(selector.SelectStrategy(cornerMenuStarts));
+            Assert.IsType<SoupMenuCheckout>(selector.SelectStrategy(cornerMenuStarts));
 
             var cornerMenuEnded = new DateTime(2022, 1, 10, 17, 0, 0);
             Assert.IsType<AdditiveCheckout>(selector.SelectStrategy(cornerMenuEnded));

@@ -29,7 +29,7 @@ namespace Sushi.Model.Checkout
 
             if (MenuDays.Contains(dateTime.DayOfWeek) && time >= MenuStartTime && time < MenuEndTime)
             {
-                return new MenuCheckout();
+                return new SoupMenuCheckout();
             }
 
             return new AdditiveCheckout();
