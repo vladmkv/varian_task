@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Sushi.Model;
 using Sushi.Model.Checkout;
 using Xunit;
@@ -126,8 +124,6 @@ namespace SushiTests
 
             Assert.Equal(soupMenuOrder3ExpectedPrice,
                 menuCheckout.CalculatePrice(soupMenuOrder3));
-
-
         }
     }
 }
