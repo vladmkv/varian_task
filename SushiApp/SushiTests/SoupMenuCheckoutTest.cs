@@ -14,6 +14,12 @@ namespace SushiTests
 
         private readonly Order soupMenuOrder1;
 
+        private readonly Order soupMenuOrder2;
+        private readonly double soupMenuOrder2ExpectedPrice;
+
+        private readonly Order soupMenuOrder3;
+        private readonly double soupMenuOrder3ExpectedPrice;
+
         private readonly Order soupMenuCheapPlateFirstOrder;
         private readonly double soupMenuCheapPlateFirstOrderExpectedPrice;
 
@@ -49,6 +55,34 @@ namespace SushiTests
 
             soupMenuCheapPlateFirstOrderExpectedPrice = MENU_EXPECTED_PRICE + 2 * BLUE_PLATE_EXPECTED_PRICE;
 
+            // Some provided tests
+            soupMenuOrder2 = new Order(new List<Plate>()
+            {
+                factory.CreatePlate(PlateType.Soup),
+                factory.CreatePlate(PlateType.Grey),
+                factory.CreatePlate(PlateType.Grey),
+                factory.CreatePlate(PlateType.Green),
+                factory.CreatePlate(PlateType.Green),
+                factory.CreatePlate(PlateType.Blue),
+                factory.CreatePlate(PlateType.Blue)
+            });
+
+            soupMenuOrder2ExpectedPrice = 10.4;
+
+            soupMenuOrder3 = new Order(new List<Plate>()
+            {
+                factory.CreatePlate(PlateType.Soup),
+                factory.CreatePlate(PlateType.Grey),
+                factory.CreatePlate(PlateType.Grey),
+                factory.CreatePlate(PlateType.Green),
+                factory.CreatePlate(PlateType.Green),
+                factory.CreatePlate(PlateType.Green),
+                factory.CreatePlate(PlateType.Red),
+                factory.CreatePlate(PlateType.Red)
+            });
+
+            soupMenuOrder3ExpectedPrice = 16.35;
+
             orderMissingSoup = new Order(new List<Plate>()
             {
                 factory.CreatePlate(PlateType.Green),
@@ -83,8 +117,16 @@ namespace SushiTests
             var menuCheckout = new SoupMenuCheckout();
 
             Assert.Equal(MENU_EXPECTED_PRICE, menuCheckout.CalculatePrice(soupMenuOrder1));
+
             Assert.Equal(soupMenuCheapPlateFirstOrderExpectedPrice,
                 menuCheckout.CalculatePrice(soupMenuCheapPlateFirstOrder));
+
+            Assert.Equal(soupMenuOrder2ExpectedPrice,
+                menuCheckout.CalculatePrice(soupMenuOrder2));
+
+            Assert.Equal(soupMenuOrder3ExpectedPrice,
+                menuCheckout.CalculatePrice(soupMenuOrder3));
+
 
         }
     }
