@@ -17,16 +17,33 @@
         // Menu ends at 17:00
         private static readonly TimeSpan MenuEndTime = new TimeSpan(17, 0, 0);
 
-        public ICheckoutStrategy SelectStrategy(DateTime dateTime)
-        {
-            var time = dateTime.TimeOfDay;
+        private readonly AdditiveCheckout additiveCheckout = new AdditiveCheckout();
 
-            if (MenuDays.Contains(dateTime.DayOfWeek) && time >= MenuStartTime && time < MenuEndTime)
+        private readonly SoupMenuCheckout soupMenuCheckout = new SoupMenuCheckout();
+
+        private readonly FivePlateMenuCheckout fivePlateMenuCheckout = new FivePlateMenuCheckout();
+
+        public ICheckoutStrategy SelectStrategy(Order order, DateTime? optionalDateTime = null)
+        {
+            if (optionalDateTime != null)
             {
-                return new SoupMenuCheckout();
+                var dateTime = (DateTime) optionalDateTime;
+                var time = dateTime.TimeOfDay;
+
+                if (MenuDays.Contains(dateTime.DayOfWeek) && time >= MenuStartTime && time < MenuEndTime)
+                {
+                    if (soupMenuCheckout.IsApplicable(order))
+                    {
+                        return soupMenuCheckout;
+                    }
+                    if (fivePlateMenuCheckout.IsApplicable(order))
+                    {
+                        return fivePlateMenuCheckout;
+                    }
+                }
             }
 
-            return new AdditiveCheckout();
+            return additiveCheckout;
         }
     }
 }
